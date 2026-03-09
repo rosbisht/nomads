@@ -1,0 +1,492 @@
+/* ===== Onboarding Screens ===== */
+.onboarding {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.onboarding-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) var(--space-lg);
+  z-index: var(--z-overlay);
+  background: linear-gradient(to bottom, var(--bg-primary), transparent);
+}
+
+.onboarding-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--color-green);
+}
+
+.step-indicators {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: var(--z-overlay);
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--text-muted);
+  opacity: 0.3;
+  transition: all var(--transition-normal);
+}
+
+.step-dot.active {
+  width: 28px;
+  background: var(--color-green);
+  opacity: 1;
+}
+
+.step-dot.completed {
+  background: var(--color-green);
+  opacity: 0.6;
+}
+
+/* --- Slides --- */
+.onboarding-slide {
+  position: absolute;
+  inset: 0;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.onboarding-slide.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+}
+
+.onboarding-slide.exit-left {
+  transform: translateX(-100%);
+}
+
+.onboarding-slide.exit-right {
+  transform: translateX(100%);
+}
+
+/* --- Screen 1: Hero --- */
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--bg-primary) 0%,
+    rgba(10, 22, 40, 0.85) 35%,
+    rgba(10, 22, 40, 0.4) 60%,
+    transparent 100%
+  );
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-2xl) var(--space-lg);
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: var(--space-md);
+  color: var(--color-white);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.hero-title .highlight {
+  background: linear-gradient(135deg, var(--color-green), var(--color-green-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: var(--space-xl);
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 16px 40px;
+  font-size: 1.1rem;
+}
+
+/* --- Screen 2: Role Selection --- */
+.role-screen {
+  min-height: 100vh;
+  padding: 100px var(--space-lg) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.role-header {
+  text-align: center;
+}
+
+.role-header h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-sm);
+}
+
+.role-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.role-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.role-card {
+  background: var(--bg-card);
+  border: var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  text-align: left;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.role-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  background: linear-gradient(135deg, var(--color-green-glow), transparent);
+}
+
+.role-card:hover::before,
+.role-card:focus::before {
+  opacity: 1;
+}
+
+.role-card:hover,
+.role-card:focus {
+  border-color: var(--color-green);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-green);
+}
+
+.role-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.solo-icon {
+  background: linear-gradient(135deg, rgba(29,185,84,0.15), rgba(29,185,84,0.05));
+  color: var(--color-green);
+}
+
+.guide-icon {
+  background: linear-gradient(135deg, rgba(232,123,53,0.15), rgba(232,123,53,0.05));
+  color: var(--color-orange);
+}
+
+.role-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: var(--space-xs);
+}
+
+.role-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.role-tag {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  background: linear-gradient(135deg, var(--color-green), var(--color-green-light));
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.role-tag.guide-tag {
+  background: linear-gradient(135deg, var(--color-orange), var(--color-orange-warm));
+}
+
+.social-sharing-preview {
+  text-align: center;
+  padding: var(--space-lg);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: var(--card-border);
+}
+
+.social-sharing-preview h4 {
+  font-size: 0.95rem;
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.social-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--bg-input);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  transition: all var(--transition-normal);
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  background: var(--color-green-glow);
+}
+
+.role-actions {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.gradient-btn-back {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 14px 24px;
+  transition: color var(--transition-fast);
+}
+
+.gradient-btn-back:hover {
+  color: var(--text-primary);
+}
+
+/* --- Screen 3: Signup --- */
+.signup-screen {
+  min-height: 100vh;
+  padding: 100px var(--space-lg) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.signup-icon-wrap {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(29,185,84,0.15), rgba(29,185,84,0.05));
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-md);
+  animation: float 3s ease-in-out infinite;
+}
+
+.signup-header h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-xs);
+}
+
+.signup-header p {
+  color: var(--text-secondary);
+}
+
+.signup-form {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding-left: 4px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--bg-input);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-md);
+  transition: all var(--transition-normal);
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--color-green);
+  box-shadow: 0 0 0 3px var(--color-green-glow);
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 14px 0;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.input-wrapper input::placeholder {
+  color: var(--text-muted);
+}
+
+.signup-btn {
+  width: 100%;
+  margin-top: var(--space-sm);
+  font-size: 1.05rem;
+}
+
+.signup-footer {
+  text-align: center;
+  margin-top: var(--space-lg);
+  width: 100%;
+  max-width: 360px;
+}
+
+.signup-footer > p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: var(--space-md);
+}
+
+.social-login-row {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.social-login-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 12px;
+  background: var(--bg-card);
+  border: var(--card-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.social-login-btn:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== Desktop Responsive ===== */
+@media (min-width: 900px) {
+  .onboarding-header {
+    padding: var(--space-lg) var(--space-xl);
+  }
+
+  .hero-title {
+    font-size: 4rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 500px;
+  }
+
+  .role-screen {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .role-cards {
+    flex-direction: row;
+  }
+
+  .role-card {
+    flex: 1;
+  }
+
+  .signup-screen {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .signup-form {
+    max-width: 400px;
+  }
+}

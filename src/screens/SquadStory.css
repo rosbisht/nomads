@@ -1,0 +1,322 @@
+/* ===== Squad Story Screen ===== */
+
+.squad-header {
+  padding: var(--space-lg) var(--space-lg) 0;
+}
+
+.squad-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.squad-header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 2px;
+}
+
+.squad-subtitle {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Story Title */
+.squad-story-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-md) var(--space-lg);
+  background: var(--bg-card);
+  border: var(--card-border);
+  border-radius: var(--radius-lg);
+}
+
+.squad-story-title h2 {
+  font-size: 1.1rem;
+  flex: 1;
+}
+
+.story-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-danger);
+  background: rgba(239,68,68,0.1);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  animation: pulse 2s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+/* Contributors */
+.contributors-carousel {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.contributors-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.contributor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.contributor-avatar-ring {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--color-green), var(--color-orange), var(--color-blue-accent));
+}
+
+.contributor-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid var(--bg-primary);
+  object-fit: cover;
+}
+
+.add-ring {
+  background: var(--bg-card);
+  border: 2px dashed var(--text-muted);
+}
+
+.add-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.add-contributor:hover .add-icon {
+  color: var(--color-green);
+}
+
+.add-contributor:hover .add-ring {
+  border-color: var(--color-green);
+}
+
+.contributor-name {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Timeline */
+.squad-timeline {
+  padding: var(--space-lg) var(--space-lg) var(--space-3xl);
+}
+
+.timeline-entry {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.timeline-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 6px;
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-green);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 10px var(--color-green-glow);
+}
+
+.timeline-line {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(to bottom, var(--color-green), transparent);
+  margin-top: -2px;
+}
+
+.timeline-card {
+  flex: 1;
+  background: var(--bg-card);
+  border: var(--card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.timeline-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-lg);
+}
+
+.timeline-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+}
+
+.timeline-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--color-green);
+  object-fit: cover;
+}
+
+.timeline-username {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.timeline-timestamp {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--color-orange);
+  font-weight: 500;
+}
+
+.timeline-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.timeline-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.timeline-card:hover .timeline-image {
+  transform: scale(1.03);
+}
+
+.timeline-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+}
+
+.timeline-note {
+  padding: var(--space-md);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.timeline-reactions {
+  display: flex;
+  gap: var(--space-sm);
+  padding: 0 var(--space-md) var(--space-md);
+}
+
+.reaction-btn {
+  padding: 6px 12px;
+  background: var(--bg-input);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.reaction-btn:hover {
+  background: var(--color-green-glow);
+  transform: scale(1.05);
+}
+
+/* FAB */
+.add-story-fab {
+  position: fixed;
+  bottom: 90px;
+  right: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 14px 24px;
+  background: linear-gradient(135deg, var(--color-green), var(--color-green-light));
+  color: white;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-glow-green);
+  z-index: var(--z-overlay);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.add-story-fab:hover {
+  transform: scale(1.05);
+}
+
+.add-story-fab:active {
+  transform: scale(0.97);
+}
+
+.fab-pulse-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-green);
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.fab-label {
+  font-size: 0.85rem;
+}
+
+/* ===== Desktop Responsive ===== */
+@media (min-width: 900px) {
+  .squad-header {
+    padding: var(--space-xl) var(--space-xl) 0;
+  }
+
+  .squad-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .squad-story-title {
+    margin: var(--space-md) var(--space-xl);
+    max-width: 600px;
+  }
+
+  .contributors-carousel {
+    padding: var(--space-md) var(--space-xl);
+  }
+
+  .squad-timeline {
+    padding: var(--space-lg) var(--space-xl) var(--space-3xl);
+    max-width: 800px;
+  }
+
+  .add-story-fab {
+    bottom: var(--space-xl);
+    right: var(--space-xl);
+  }
+}
