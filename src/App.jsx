@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import BottomNav from './components/BottomNav';
 import Onboarding from './screens/Onboarding';
@@ -11,7 +11,7 @@ import SquadStory from './screens/SquadStory';
 export default function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <HashRouter>
         <div className="app-container">
           <Routes>
             <Route path="/" element={<Onboarding />} />
@@ -24,7 +24,7 @@ export default function App() {
           </Routes>
           <BottomNav />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }
